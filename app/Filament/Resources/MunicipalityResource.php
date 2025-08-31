@@ -28,6 +28,8 @@ class MunicipalityResource extends Resource
 
     protected static ?string $pluralModelLabel = 'Municipios';
 
+    protected static ?int $navigationSort = 2;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -70,8 +72,8 @@ class MunicipalityResource extends Resource
                     ->relationship('state', 'name'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                // Tables\Actions\EditAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
