@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('cve_loc', 4); // 0001..9999
             $table->char('cve_geo', 9); // cve_ent + cve_mun + cve_loc
             $table->string('name');
-            $table->boolean('urban_area'); // true=Urbano, false=Rural
+            $table->boolean('urban_area')->nullable(); // true=Urbano, false=Rural
             $table->decimal('lat', 10, 6)->nullable();
             $table->decimal('lng', 10, 6)->nullable();
             $table->timestamps();
