@@ -60,8 +60,7 @@ class LocalityResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('municipality.name')
                     ->label('Municipio')
-                    ->searchable()
-                    ->sortable(),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('cve_loc')
                     ->label('Clave de Localidad')
                     ->searchable(),
@@ -110,7 +109,7 @@ class LocalityResource extends Resource
         return [
             'index' => Pages\ListLocalities::route('/'),
             'create' => Pages\CreateLocality::route('/create'),
-            'edit' => Pages\EditLocality::route('/{record}/edit'),
+            // 'edit' => Pages\EditLocality::route('/{record}/edit'),
         ];
     }
 }

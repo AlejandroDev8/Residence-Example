@@ -55,6 +55,7 @@ class MunicipalityResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('state.name')
                     ->label('Estado')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('cve_mun')
                     ->label('Clave de Municipio')
@@ -94,7 +95,7 @@ class MunicipalityResource extends Resource
         return [
             'index' => Pages\ListMunicipalities::route('/'),
             'create' => Pages\CreateMunicipality::route('/create'),
-            'edit' => Pages\EditMunicipality::route('/{record}/edit'),
+            // 'edit' => Pages\EditMunicipality::route('/{record}/edit'),
         ];
     }
 }

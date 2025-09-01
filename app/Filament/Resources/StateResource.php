@@ -84,7 +84,7 @@ class StateResource extends Resource
         return [
             'index' => Pages\ListStates::route('/'),
             'create' => Pages\CreateState::route('/create'),
-            'edit' => Pages\EditState::route('/{record}/edit'),
+            // 'edit' => Pages\EditState::route('/{record}/edit'),
         ];
     }
 }
