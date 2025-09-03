@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class MaizeSubSample extends Model
 {
@@ -28,4 +29,18 @@ class MaizeSubSample extends Model
         'indice_lgr_agr',
         'volumen_grano_50_ml',
     ];
+
+    protected static function booted(): void
+    {
+        static::saving(function ($m) {
+            if ($m->longitud_grano_mm && $m->ancho_grano_mm && !$m->indice_lgr_agr) {
+                $m->indice_lgr_agr = round($m->longitud_grano_mm / max($m->ancho_grano_mm, 0.0001), 3);
+            }
+        });
+    }
+
+    public function sample(): BelongsTo
+    {
+        return $this->belongsTo(MaizeSample::class, 'maize_sample_id');
+    }
 }
