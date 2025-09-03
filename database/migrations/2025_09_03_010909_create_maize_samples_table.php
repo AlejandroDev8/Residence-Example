@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
 
             // Relationships
-            $table->foreign('user_id')->constrained()->onDelete('cascade');
-            $table->foreign('farmer_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('farmer_id')->constrained()->onDelete('cascade');
             $table->foreignId('municipality_id')->constrained()->onDelete('cascade');
             $table->foreignId('locality_id')->constrained()->onDelete('cascade');
 
