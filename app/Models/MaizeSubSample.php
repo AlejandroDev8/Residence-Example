@@ -30,6 +30,24 @@ class MaizeSubSample extends Model
         'volumen_grano_50_ml',
     ];
 
+    // Casts
+    protected $casts = [
+        'maize_sample_id'        => 'int',
+        'subsample_number'       => 'int',
+        'num_hileras'            => 'int',
+        'num_granos_por_hilera'  => 'int',
+
+        'diametro_mazorca_mm'    => 'float',
+        'largo_mazorca_mm'       => 'float',
+        'peso_mazorca_g'         => 'float',
+        'peso_grano_50_g'        => 'float',
+        'grosor_grano_mm'        => 'float',
+        'ancho_grano_mm'         => 'float',
+        'longitud_grano_mm'      => 'float',
+        'indice_lgr_agr'         => 'float',
+        'volumen_grano_50_ml'    => 'float',
+    ];
+
     protected static function booted(): void
     {
         static::saving(function ($m) {
