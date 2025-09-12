@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Storage;
 
 class MaizeSubSample extends Model
 {
@@ -28,7 +29,17 @@ class MaizeSubSample extends Model
         'longitud_grano_mm',
         'indice_lgr_agr',
         'volumen_grano_50_ml',
+        'image_path',
     ];
+
+    protected $appends = [
+        'image_url',
+    ];
+
+    public function getImageUrlAttribute(): ?string
+    {
+        return blank($this->image_path) ? null : asset('storage/' . $this->image_path);
+    }
 
     // Casts
     protected $casts = [
@@ -53,6 +64,12 @@ class MaizeSubSample extends Model
         static::saving(function ($m) {
             if ($m->longitud_grano_mm && $m->ancho_grano_mm && !$m->indice_lgr_agr) {
                 $m->indice_lgr_agr = round($m->longitud_grano_mm / max($m->ancho_grano_mm, 0.0001), 3);
+            }
+        });
+
+        static::deleting(function (self $m) {
+            if ($m->image_path) {
+                Storage::disk('public')->delete($m->image_path);
             }
         });
     }
