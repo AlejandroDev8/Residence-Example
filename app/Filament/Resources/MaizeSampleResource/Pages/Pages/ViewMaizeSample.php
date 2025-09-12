@@ -10,6 +10,7 @@ use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\Grid;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\RepeatableEntry;
+use Filament\Infolists\Components\ImageEntry;
 
 class ViewMaizeSample extends ViewRecord
 {
@@ -84,6 +85,13 @@ class ViewMaizeSample extends ViewRecord
           RepeatableEntry::make('subsamples')
             ->label('Sub-muestras')
             ->schema([
+              // === Imagen de la sub-muestra (usa tu accessor image_url) ===
+              ImageEntry::make('image_url')
+                ->label('Foto')
+                ->height('200px')
+                ->hidden(fn($state) => blank($state))
+                ->columnSpanFull(),
+
               Grid::make(4)->schema([
                 TextEntry::make('subsample_number')->label('N°'),
                 TextEntry::make('color_grano')->label('Color grano')->placeholder('—'),

@@ -23,6 +23,7 @@ use Filament\Tables\Table;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\FileUpload;
 use Illuminate\Support\Collection;
 
 class MaizeSampleResource extends Resource
@@ -243,9 +244,26 @@ class MaizeSampleResource extends Resource
                                             ->label('Volumen 50 semillas (ml)')
                                             ->numeric()
                                             ->minValue(0),
+                                    ]),
+                                Fieldset::make('Imagen')
+                                    ->schema([
+                                        FileUpload::make('image_path')
+                                            ->label('Imagen de la sub-muestra')
+                                            ->image()                 // valida que sea imagen
+                                            ->disk('public')          // usa storage público
+                                            ->directory('subsamples') // carpeta destino
+                                            ->imageEditor()           // editor integrado
+                                            ->imagePreviewHeight('150')
+                                            ->openable()
+                                            ->downloadable()
+                                            ->nullable()
+                                            ->columnSpanFull()
+                                            ->helperText('Opcional. Foto de la sub-muestra.'),
                                     ])
+                                    ->columnSpanFull(),
                             ])
                             ->columns(3),
+
                     ]),
             ]);
     }
