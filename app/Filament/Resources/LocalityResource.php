@@ -84,6 +84,8 @@ class LocalityResource extends Resource
             ->filters([
                 SelectFilter::make('municipality_id')
                     ->label('Municipio')
+                    ->searchable()
+                    ->preload()
                     ->relationship('municipality', 'name'),
             ])
             ->actions([

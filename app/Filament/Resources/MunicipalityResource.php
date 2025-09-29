@@ -70,6 +70,8 @@ class MunicipalityResource extends Resource
             ->filters([
                 SelectFilter::make('state_id')
                     ->label('Estado')
+                    ->searchable()
+                    ->preload()
                     ->relationship('state', 'name'),
             ])
             ->actions([
