@@ -1,4 +1,4 @@
-# Residence-Example
+# Residencias
 
 ## Descripción
 
@@ -33,7 +33,7 @@ Las migraciones definen las siguientes tablas principales:
 - `farmers`
 - `maize_samples`
 - `maize_sub_samples`
-- `Tablas de usuarios y autenticación`
+- `users`
 
 ## Rutas Actuales
 
