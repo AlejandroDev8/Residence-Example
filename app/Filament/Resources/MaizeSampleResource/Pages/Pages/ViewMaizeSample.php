@@ -85,13 +85,6 @@ class ViewMaizeSample extends ViewRecord
           RepeatableEntry::make('subsamples')
             ->label('Sub-muestras')
             ->schema([
-              // === Imagen de la sub-muestra (usa tu accessor image_url) ===
-              ImageEntry::make('image_url')
-                ->label('Foto')
-                ->height('200px')
-                ->hidden(fn($state) => blank($state))
-                ->columnSpanFull(),
-
               Grid::make(4)->schema([
                 TextEntry::make('subsample_number')->label('N°'),
                 TextEntry::make('color_grano')->label('Color grano')->placeholder('—'),
@@ -121,6 +114,12 @@ class ViewMaizeSample extends ViewRecord
                 TextEntry::make('color_dorsal_grano')->label('Color dorsal')->placeholder('—'),
                 TextEntry::make('forma_corona_grano')->label('Forma corona')->placeholder('—'),
               ]),
+              // === Imagen de la sub-muestra (usa tu accessor image_url) ===
+              ImageEntry::make('image_url')
+                ->label('Foto')
+                ->height('200px')
+                ->hidden(fn($state) => blank($state))
+                ->columnSpanFull(),
             ])
             ->columns(1)
             ->columnSpanFull(),
