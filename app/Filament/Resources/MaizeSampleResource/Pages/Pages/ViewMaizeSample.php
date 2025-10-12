@@ -27,13 +27,13 @@ class ViewMaizeSample extends ViewRecord
     return $this->getHeading();
   }
 
-  protected function getHeaderActions(): array
-  {
-    return [
-      Actions\EditAction::make(),
-      Actions\DeleteAction::make(),
-    ];
-  }
+  // protected function getHeaderActions(): array
+  // {
+  //   return [
+  //     Actions\EditAction::make(),
+  //     Actions\DeleteAction::make(),
+  //   ];
+  // }
 
   public function infolist(Infolist $infolist): Infolist
   {
