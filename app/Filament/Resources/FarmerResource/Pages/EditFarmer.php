@@ -41,7 +41,7 @@ class EditFarmer extends EditRecord
     {
         return Notification::make()
             ->success()
-            ->title('Usuario actualizado')
-            ->body('El usuario ha sido actualizado correctamente.');
+            ->title("El agricultor {$this->record->name} ha sido actualizado")
+            ->body('Los cambios han sido guardados exitosamente.');
     }
 }

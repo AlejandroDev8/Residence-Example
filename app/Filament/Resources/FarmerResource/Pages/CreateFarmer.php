@@ -20,7 +20,7 @@ class CreateFarmer extends CreateRecord
     {
         return Notification::make()
             ->success()
-            ->title('Usuario creado')
-            ->body('El usuario ha sido creado exitosamente.');
+            ->title("El agricultor {$this->record->name} ha sido creado")
+            ->body('Los cambios han sido guardados exitosamente.');
     }
 }
