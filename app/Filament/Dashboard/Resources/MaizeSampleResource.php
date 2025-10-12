@@ -33,7 +33,6 @@ class MaizeSampleResource extends Resource
     protected static ?string $model = MaizeSample::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-beaker';
-    protected static ?string $navigationGroup = 'Agronomía';
     protected static ?string $navigationLabel = 'Muestras de Maíz';
     protected static ?string $modelLabel = 'Muestra de Maíz';
     protected static ?string $pluralModelLabel = 'Muestras de Maíz';
