@@ -26,6 +26,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 
 class MaizeSampleResource extends Resource
@@ -36,6 +37,11 @@ class MaizeSampleResource extends Resource
     protected static ?string $navigationLabel = 'Muestras de Maíz';
     protected static ?string $modelLabel = 'Muestra de Maíz';
     protected static ?string $pluralModelLabel = 'Muestras de Maíz';
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
+    }
 
     public static function form(Form $form): Form
     {
@@ -62,8 +68,8 @@ class MaizeSampleResource extends Resource
                                 Select::make('user_id')
                                     ->label('Recolector')
                                     ->relationship('collector', 'name')
-                                    ->searchable()
-                                    ->preload()
+                                    ->disabled()
+                                    ->default(fn() => optional(Auth::user())->id)
                                     ->required(),
 
                                 Select::make('farmer_id')
