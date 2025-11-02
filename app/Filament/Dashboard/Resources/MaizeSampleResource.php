@@ -328,12 +328,6 @@ class MaizeSampleResource extends Resource
                     ->preload()
                     ->searchable(),
 
-                SelectFilter::make('user_id')
-                    ->label('Recolector')
-                    ->relationship('collector', 'name')
-                    ->preload()
-                    ->searchable(),
-
                 SelectFilter::make('farmer_id')
                     ->label('Agricultor')
                     ->relationship('farmer', 'name')
@@ -379,6 +373,7 @@ class MaizeSampleResource extends Resource
             'index' => Pages\ListMaizeSamples::route('/'),
             'create' => Pages\CreateMaizeSample::route('/create'),
             'edit' => Pages\EditMaizeSample::route('/{record}/edit'),
+            'view' => Pages\ViewMaizeSampleDashboard::route('/{record}'),
         ];
     }
 }
